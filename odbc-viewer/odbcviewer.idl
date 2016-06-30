@@ -1,0 +1,60 @@
+// odbcviewer.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (odbcviewer.tlb) that will become a resource in
+// odbc-viewer.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(873EAFF7-7237-498D-A6B4-2C83C8BE8E70), version(1.0),
+  control ]
+library odbcviewerLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CodbcviewerCtrl
+	[ 
+		uuid(7BE98449-97C1-4DE3-A46B-6E17FAC2DB41)	
+	]
+	dispinterface _Dodbcviewer
+	{
+		properties:
+			[id(1)] BSTR odbcdnsname;
+			[id(2)] BSTR colremap;
+			[id(3)] BSTR colremapwidth;
+			[id(4)] BSTR sqlquery;
+			[id(5)] VARIANT_BOOL supresserrors;
+			[id(6)] LONG Update;
+	methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(7)] LONGLONG UpdateLV();
+			[id(8)] void UpdateLVExtended(BSTR dsn, BSTR sql, BSTR colmap, BSTR colmapw, VARIANT_BOOL supresserrors);
+	};
+
+	//  Event dispatch interface for CodbcviewerCtrl
+
+	[ 
+		uuid(837D500B-1818-4827-B04C-FF027F0FE8DD)	
+	]
+	dispinterface _DodbcviewerEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			[id(DISPID_REFRESH)] void Refresh();
+	};
+
+	//  Class information for CodbcviewerCtrl
+	[
+		uuid(C824C924-A567-48C0-B493-61385D9518E7)
+	]
+	coclass odbcviewer
+	{
+		[default] dispinterface _Dodbcviewer;
+		[default, source] dispinterface _DodbcviewerEvents;
+	};
+
+};
