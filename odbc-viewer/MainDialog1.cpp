@@ -21,6 +21,7 @@ void explode(wchar_t *src, const wchar_t *tokens, wchar_t ***list, size_t *len)
 	if (src == NULL || list == NULL || len == NULL)
 		return;
 
+
 	wchar_t *str, *copy, **_list = NULL, **tmp;
 	*list = NULL;
 	*len = 0;
