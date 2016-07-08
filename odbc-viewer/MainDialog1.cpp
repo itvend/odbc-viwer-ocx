@@ -263,11 +263,16 @@ void MainDialog1::OnBnClickedButton1()
 		}
 
 	}
-	
+	// free all HSTMT-s
+	SQLDisconnect(hdbc);
+
 end:
 	{
 		dsn.ReleaseBuffer();
 		sql.ReleaseBuffer();
+		// free handles
+		SQLFreeHandle(SQL_HANDLE_ENV, henv);
+		SQLFreeHandle(SQL_HANDLE_DBC, hdbc);
 	}
 }
 
