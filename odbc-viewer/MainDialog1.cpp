@@ -271,8 +271,8 @@ end:
 		dsn.ReleaseBuffer();
 		sql.ReleaseBuffer();
 		// free handles
-		SQLFreeHandle(SQL_HANDLE_ENV, henv);
 		SQLFreeHandle(SQL_HANDLE_DBC, hdbc);
+		SQLFreeHandle(SQL_HANDLE_ENV, henv);
 	}
 }
 
